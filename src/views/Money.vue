@@ -1,6 +1,76 @@
 <template>
-  <div>
-    Money.vue
+  <div class="nav-wrapper">
+    <div class="content">
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+      <p>Money.vue</p>
+    </div>
     <Nav />
   </div>
 </template>
@@ -12,5 +82,16 @@ name: "Money"
 </script>
 
 <style lang="scss" scoped>
+  .nav-wrapper {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid red;
+    height: 100vh;
+  }
 
+  .content {
+    border: 1px solid green;
+    flex-grow: 1;
+    overflow: auto;
+  }
 </style>
