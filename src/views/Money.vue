@@ -53,4 +53,34 @@ name: "Money",
 </script>
 
 <style lang="scss" scoped>
+  @import "~@/assets/style/helper.scss";
+  .tags {
+    font-size: 14px;
+    > .current {
+      display: flex;
+      > li {
+        background: #D9D9D9;
+        $h: 24px;
+        height: $h;
+        padding: 0 16px;
+        border-radius: $h/2;
+        margin-right: 12px;
+        line-height: $h;
+      }
+    }
+
+    > .new {
+      padding-top: 16px;
+
+      button {
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid;
+        color: #999999;
+        padding: 0 4px;
+      }
+
+    }
+
+  }
 </style>
