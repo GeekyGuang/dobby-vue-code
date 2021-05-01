@@ -19,3 +19,7 @@ ul, ol {
 button {
     font: inherit;
 }
+
+:focus {
+    outline: none;
+}
