@@ -33,13 +33,13 @@
         <button>4</button>
         <button>5</button>
         <button>6</button>
-        <button></button>
         <button>清空</button>
         <button>7</button>
         <button>8</button>
         <button>9</button>
-        <button>OK</button>
+        <button class="OK">OK</button>
         <button>.</button>
+        <button class="zero">0</button>
       </div>
     </div>
   </Layout>
@@ -54,6 +54,29 @@ name: "Money",
 
 <style lang="scss" scoped>
   @import "~@/assets/style/helper.scss";
+  .numberPad {
+    .output {
+      background: #fff;
+      padding: 9px 16px;
+      font-size: 36px;
+      font-family: Consolas, monospace;
+      text-align: right;
+    }
+    .buttons {
+      > button {
+        width: 25%;
+        height: 64px;
+        float: left;
+      }
+      .OK {
+        height: 64*2px;
+        float: right;
+      }
+      .zero {
+        width: 50%;
+      }
+    }
+  }
   .types {
     background: #C4C4C4;
     display: flex;
@@ -80,7 +103,6 @@ name: "Money",
   .notes {
     background: #f5f5f5;
     font-size: 14px;
-    color: #333333;
     padding-left: 16px;
     display: flex;
     align-items: center;
