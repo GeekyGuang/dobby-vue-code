@@ -63,6 +63,8 @@ name: "Money",
       text-align: right;
     }
     .buttons {
+      @extend %clearFix;
+
       > button {
         width: 25%;
         height: 64px;
