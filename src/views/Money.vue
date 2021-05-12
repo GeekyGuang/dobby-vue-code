@@ -56,6 +56,7 @@ name: "Money",
   @import "~@/assets/style/helper.scss";
   .numberPad {
     .output {
+      @extend %innerShadow;
       background: #fff;
       padding: 9px 16px;
       font-size: 36px;
