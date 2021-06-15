@@ -1,7 +1,7 @@
 <template>
   <div class="tags">
     <div class="new">
-      <button>新增标签</button>
+      <button @click="create">新增标签</button>
     </div>
     <ul class="current">
       <li v-for="item in dataSource" :key="item"
@@ -30,6 +30,15 @@ export default class Tags extends Vue {
     }
   }
 
+  create(){
+    const tag = window.prompt("请输入一个新的标签")
+    console.log(tag)
+    if (tag === ''){
+      alert("标签名不能为空")
+    } else if(this.dataSource && this.dataSource.indexOf(tag!) < 0){
+      this.$emit("update:dataSource", [...this.dataSource, tag])
+    }
+  }
 
 }
 </script>
