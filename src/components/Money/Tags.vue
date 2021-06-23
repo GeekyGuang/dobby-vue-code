@@ -28,15 +28,16 @@ export default class Tags extends Vue {
     } else {
       this.selectedTags.push(tag);
     }
+    this.$emit('update:value', this.selectedTags);
   }
 
-  create(){
-    const tag = window.prompt("请输入一个新的标签")
-    console.log(tag)
-    if (tag === ''){
-      alert("标签名不能为空")
-    } else if(this.dataSource && this.dataSource.indexOf(tag!) < 0){
-      this.$emit("update:dataSource", [...this.dataSource, tag])
+  create() {
+    const tag = window.prompt('请输入一个新的标签');
+    console.log(tag);
+    if (tag === '') {
+      alert('标签名不能为空');
+    } else if (this.dataSource && this.dataSource.indexOf(tag!) < 0) {
+      this.$emit('update:dataSource', [...this.dataSource, tag]);
     }
   }
 
