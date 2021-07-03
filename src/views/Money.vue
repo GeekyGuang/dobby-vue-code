@@ -19,8 +19,11 @@ type Record = {
   tags: string[],
   notes: string,
   type: string,
-  amount: number
+  amount: number,
+  createAt?: Date
 }
+
+const recordList:Record[] = JSON.parse(window.localStorage.getItem('recordList') || '[]')
 
 @Component({
   components: {Tags, Notes, Types, NumberPad}
@@ -30,9 +33,7 @@ export default class Money extends Vue {
   record:Record = {
     tags: [], notes: '', type:'-', amount: 0
   }
-
-  recordList:Record[] = []
-
+  recordList:Record[] = recordList
   onUpdateTags(value:string[]){
     this.record.tags = value
   }
@@ -46,7 +47,8 @@ export default class Money extends Vue {
   }
 
   saveRecord(){
-    const record2 = JSON.parse(JSON.stringify(this.record))
+    const record2:Record = JSON.parse(JSON.stringify(this.record))
+    record2.createAt = new Date()
     this.recordList.push(record2)
   }
 
