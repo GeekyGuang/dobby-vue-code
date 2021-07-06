@@ -1,11 +1,25 @@
 const localStorageItemName = 'tagList';
 
-const tagListModel = {
+type TagListModel = {
+  data: string[],
+  fetch: () => string[],
+  create: (name: string) => 'success' | 'duplicated',  // 联合类型
+  save: () => void
+}
+const tagListModel: TagListModel = {
+  data: [],
   fetch() {
-    return JSON.parse(window.localStorage.getItem(localStorageItemName) || '[]') as string[];
+    this.data = JSON.parse(window.localStorage.getItem(localStorageItemName) || '[]');
+    return this.data;
   },
-  save(data: string[]) {
-    window.localStorage.setItem(localStorageItemName, JSON.stringify(data));
+  create(name) {
+    if(this.data.indexOf(name) >= 0) {return 'duplicated'}
+    this.data.push(name);
+    this.save();
+    return 'success';
+  },
+  save() {
+    window.localStorage.setItem(localStorageItemName, JSON.stringify(this.data));
   }
 };
 
