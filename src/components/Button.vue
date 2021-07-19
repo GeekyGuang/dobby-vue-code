@@ -1,5 +1,7 @@
 <template>
-  <div></div>
+  <button class="button" @click="$emit('click', $event)">
+    <slot/>
+  </button>
 </template>
 
 <script lang="ts">
@@ -12,5 +14,12 @@ export default class Button extends Vue{
 </script>
 
 <style lang="scss" scoped>
-
+.button {
+  border: none;
+  border-radius: 4px;
+  background: #767676;
+  padding: 0 16px;
+  height: 40px;
+  color: white;
+}
 </style>
