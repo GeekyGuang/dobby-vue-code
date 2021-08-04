@@ -9,6 +9,7 @@ type TagListModel = {
   data: tag[],
   fetch: () => tag[],
   create: (name: string) => 'success' | 'duplicated',  // 联合类型
+  update: (id: string, name: string) => 'success' | 'not found' | 'duplicated',
   save: () => void
 }
 const tagListModel: TagListModel = {
@@ -18,11 +19,26 @@ const tagListModel: TagListModel = {
     return this.data;
   },
   create(name) {
-    const names = this.data.map(item => item.name)
+    const names = this.data.map(item => item.name);
     if (names.indexOf(name) >= 0) {return 'duplicated';}
     this.data.push({id: name, name: name});
     this.save();
     return 'success';
+  },
+  update(id, name) {
+    const ids = this.data.map(item => item.id);
+    if (ids.indexOf(id) >= 0) {
+      const tag = this.data.filter(item => item.id === id)[0];
+      if (tag.name === name) {
+        return 'duplicated';
+      } else {
+        tag.name = name;
+        this.save();
+        return 'success';
+      }
+    } else {
+      return 'not found';
+    }
   },
   save() {
     window.localStorage.setItem(localStorageItemName, JSON.stringify(this.data));
