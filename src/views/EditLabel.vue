@@ -1,7 +1,7 @@
 <template>
   <Layout>
     <div class="navBar">
-      <Icon class="leftIcon" name="left" />
+      <Icon class="leftIcon" name="left" @click="back"/>
       <span class="title">编辑标签</span>
       <span class="rightIcon"></span>
     </div>
@@ -12,7 +12,7 @@
                 placeholder="请输入标签名"/>
     </div>
     <div class="button-wrapper">
-      <Button>删除标签</Button>
+      <Button @click="remove">删除标签</Button>
     </div>
   </Layout>
 </template>
@@ -41,11 +41,20 @@ export default class EditLabel extends Vue{
     }
   }
 
-  update(value:string) {
+  update(value:string):void {
     if(this.tag){
       tagListModel.update(this.tag.id, value)
     }
+  }
 
+  remove():void {
+    if(this.tag) {
+      tagListModel.remove(this.tag.id)
+    }
+  }
+
+  back():void {
+    this.$router.back()
   }
 }
 </script>

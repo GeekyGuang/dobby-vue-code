@@ -10,6 +10,7 @@ type TagListModel = {
   fetch: () => tag[],
   create: (name: string) => 'success' | 'duplicated',  // 联合类型
   update: (id: string, name: string) => 'success' | 'not found' | 'duplicated',
+  remove: (id: string) => boolean,
   save: () => void
 }
 const tagListModel: TagListModel = {
@@ -39,6 +40,18 @@ const tagListModel: TagListModel = {
     } else {
       return 'not found';
     }
+  },
+  remove(id) {
+    let index = -1
+    for (let i = 0; i < this.data.length; i++) {
+      if (this.data[i].id === id){
+        index = i
+        break
+      }
+    }
+    this.data.splice(index, 1)
+    this.save()
+    return true
   },
   save() {
     window.localStorage.setItem(localStorageItemName, JSON.stringify(this.data));
