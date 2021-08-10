@@ -1,4 +1,4 @@
-export type RecordItem = {
+type RecordItem = {
   tags: string[],
   notes: string,
   type: string,
@@ -6,3 +6,20 @@ export type RecordItem = {
   createAt?: Date
 }
 
+type tag = {
+  id: string
+  name: string
+}
+
+type TagListModel = {
+  data: tag[],
+  fetch: () => tag[],
+  create: (name: string) => 'success' | 'duplicated',  // 联合类型
+  update: (id: string, name: string) => 'success' | 'not found' | 'duplicated',
+  remove: (id: string) => boolean,
+  save: () => void
+}
+
+interface Window {
+  tagList: tag[];
+}
