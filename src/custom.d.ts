@@ -6,14 +6,14 @@ type RecordItem = {
   createAt?: Date
 }
 
-type tag = {
+type Tag = {
   id: string
   name: string
 }
 
 type TagListModel = {
-  data: tag[],
-  fetch: () => tag[],
+  data: Tag[],
+  fetch: () => Tag[],
   create: (name: string) => 'success' | 'duplicated',  // 联合类型
   update: (id: string, name: string) => 'success' | 'not found' | 'duplicated',
   remove: (id: string) => boolean,
@@ -21,5 +21,9 @@ type TagListModel = {
 }
 
 interface Window {
-  tagList: tag[];
+  tagList: Tag[];
+  createTag: (name: string) => void;
+  updateTag: TagListModel['update'];
+  removeTag: TagListModel['remove'];
+  findTag: (id: string) => Tag | undefined
 }

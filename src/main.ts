@@ -13,6 +13,23 @@ Vue.component('Layout', Layout)
 Vue.component('Icon', Icon)
 
 window.tagList = tagListModel.fetch()
+window.createTag = (name: string) => {
+  const message = tagListModel.create(name);
+  if (message === 'duplicated') {
+    window.alert('标签名已存在');
+  } else if (message === 'success') {
+    window.alert('创建成功');
+  }
+}
+window.updateTag = (id:string, name: string) => {
+  return tagListModel.update(id, name)
+}
+window.removeTag = (id:string) => {
+  return tagListModel.remove(id)
+}
+window.findTag = (id:string) => {
+  return window.tagList.find(t => t.id === id)
+}
 
 Vue.config.productionTip = false
 new Vue({
