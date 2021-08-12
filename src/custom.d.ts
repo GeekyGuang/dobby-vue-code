@@ -25,5 +25,8 @@ interface Window {
   createTag: (name: string) => void;
   updateTag: TagListModel['update'];
   removeTag: TagListModel['remove'];
-  findTag: (id: string) => Tag | undefined
+  findTag: (id: string) => Tag | undefined;
+  recordList: RecordItem[];
+  createRecord: (record: RecordItem) => void;
+
 }
