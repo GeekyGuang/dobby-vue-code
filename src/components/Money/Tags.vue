@@ -32,12 +32,9 @@ export default class Tags extends Vue {
   }
 
   create() {
-    const tag = window.prompt('请输入一个新的标签');
-    console.log(tag);
-    if (tag === '') {
-      alert('标签名不能为空');
-    } else if (this.dataSource && this.dataSource.indexOf(tag!) < 0) {
-      this.$emit('update:dataSource', [...this.dataSource, tag]);
+    const name = window.prompt('请输入标签名');
+    if (name) {
+      window.createTag(name)
     }
   }
 
