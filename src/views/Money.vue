@@ -19,6 +19,8 @@ import FormItem from '@/components/Money/FormItem.vue';
 import Tags from '@/components/Money/Tags.vue';
 import {Component, Watch} from 'vue-property-decorator';
 import store from '@/store/index2'
+import store2 from '@/store/index2'
+console.log(store === store2)
 
 @Component({
   components: {Tags, FormItem, Types, NumberPad}
