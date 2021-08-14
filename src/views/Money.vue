@@ -8,6 +8,8 @@
                 @update:value="onUpdateNotes"/>
     </div>
     <Tags/>
+    {{count}}
+    <button @click="addCount">+1</button>
   </Layout>
 </template>
 
@@ -23,9 +25,17 @@ import store2 from '@/store/index2'
 console.log(store === store2)
 
 @Component({
-  components: {Tags, FormItem, Types, NumberPad}
+  components: {Tags, FormItem, Types, NumberPad},
+  computed:{
+    count(){
+      return store.count
+    }
+  }
 })
 export default class Money extends Vue {
+  addCount(){
+    store.addCount()
+  }
   record: RecordItem = {
     tags: [], notes: '', type: '-', amount: 0
   };
