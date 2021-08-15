@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import clone from '@/lib/clone';
 import createId from '@/lib/idCreator';
+import router from '@/router';
 
 Vue.use(Vuex);
 
@@ -61,6 +62,18 @@ const store = new Vuex.Store({
           store.commit('saveTag');
         }
       }
+    },
+    removeTag (state,id:string) {
+      let index = -1
+      for (let i = 0; i < state.tagList.length; i++) {
+        if (state.tagList[i].id === id){
+          index = i
+          break
+        }
+      }
+      state.tagList.splice(index, 1)
+      store.commit('saveTag')
+      router.back()
     },
   }
 });
