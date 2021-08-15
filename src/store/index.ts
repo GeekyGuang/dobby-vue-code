@@ -1,9 +1,9 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from 'vue';
+import Vuex from 'vuex';
 import clone from '@/lib/clone';
 import createId from '@/lib/idCreator';
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 type RootState = {
   recordList: RecordItem[],
@@ -18,14 +18,14 @@ const store = new Vuex.Store({
     currentTag: undefined
   } as RootState,
   mutations: {
-    fetchRecords(state){
+    fetchRecords(state) {
       state.recordList = JSON.parse(window.localStorage.getItem('recordList') || '[]') as RecordItem[];
     },
-    createRecord (state, record: RecordItem){
+    createRecord(state, record: RecordItem) {
       const record2: RecordItem = clone(record);
       record2.createAt = new Date();
       state.recordList.push(record2);
-      store.commit('saveRecords')
+      store.commit('saveRecords');
     },
     saveRecords(state) {
       window.localStorage.setItem('recordList', JSON.stringify(state.recordList));
@@ -33,27 +33,36 @@ const store = new Vuex.Store({
     fetchTags(state) {
       state.tagList = JSON.parse(window.localStorage.getItem('tagList') || '[]');
     },
-    createTag(state, name: string){
+    createTag(state, name: string) {
       const names = state.tagList.map(item => item.name);
       if (names.indexOf(name) >= 0) {
-        window.alert('标签名已存在')
+        window.alert('标签名已存在');
       }
-      const id = createId().toString()
+      const id = createId().toString();
       state.tagList.push({id, name: name});
-      store.commit('saveTag')
+      store.commit('saveTag');
       window.alert('创建成功');
     },
     saveTag(state) {
       window.localStorage.setItem('tagList', JSON.stringify(state.tagList));
     },
-    setCurrentTag(state, id:string) {
-      state.currentTag = state.tagList.find(t => t.id === id)
+    setCurrentTag(state, id: string) {
+      state.currentTag = state.tagList.find(t => t.id === id);
     },
-  },
-  actions: {
-  },
-  modules: {
+    updateTag(state, payload: { id: string, name: string }) {
+      const {id, name} = payload;
+      const ids = state.tagList.map(item => item.id);
+      if (ids.indexOf(id) >= 0) {
+        const tag = state.tagList.filter(item => item.id === id)[0];
+        if (tag.name === name) {
+          window.alert('标签名重复');
+        } else {
+          tag.name = name;
+          store.commit('saveTag');
+        }
+      }
+    },
   }
-})
+});
 
-export default store
+export default store;
