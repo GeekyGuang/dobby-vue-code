@@ -4,10 +4,12 @@
     <Tabs class-prefix="interval" :value.sync="interval" :dataSource="intervalList"/>
     <ol>
       <li v-for="(group,index) in result" :key="index">
-        <h3>{{group.title}}</h3>
+        <h3 class="title">{{group.title}}</h3>
         <ol>
-          <li v-for="(item,index) in group.items" :key="index">
-            {{item.amount}} {{item.createAt}}
+          <li class="record" v-for="(item,index) in group.items" :key="index">
+            <span>{{tagString(item.tags)}}</span>
+            <span class="notes">{{item.notes}}</span>
+            <span>￥{{item.amount}}</span>
           </li>
         </ol>
       </li>
@@ -32,6 +34,10 @@ export default class Statistics extends  Vue{
     intervalList = intervalList
     recordTypeList = recordTypeList
 
+    tagString(tags: Tag[]) {
+      return tags.length === 0 ? '无' : tags.join(',')
+    }
+
     get recordList() {
       return this.$store.state.recordList
     }
@@ -54,7 +60,27 @@ export default class Statistics extends  Vue{
 }
 </script>
 
+
 <style lang="scss" scoped>
+  %item {
+    padding: 8px 16px;
+    line-height: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+  }
+  .title {
+    @extend %item;
+  }
+  .record {
+    background: white;
+    @extend %item;
+  }
+  .notes {
+    margin-right: auto;
+    margin-left: 16px;
+    color: #999;
+  }
   ::v-deep {
     .type-tabs-item {
       background: #fff;
