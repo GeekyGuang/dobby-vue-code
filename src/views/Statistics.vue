@@ -51,6 +51,7 @@ export default class Statistics extends  Vue{
       }
     }
 
+
     tagString(tags: Tag[]) {
       return tags.length === 0 ? '无' : tags.join(',')
     }
