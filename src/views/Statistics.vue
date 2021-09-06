@@ -1,18 +1,21 @@
 <template>
   <Layout>
-    <Tabs class-prefix="type" :value.sync="type" :data-source="recordTypeList"/>
-    <ol>
-      <li v-for="(group,index) in groupedList" :key="index">
-        <h3 class="title">{{ beautify(group.title) }}<span>￥{{group.total}}</span></h3>
-        <ol>
-          <li class="record" v-for="(item,index) in group.items" :key="index">
-            <span>{{ tagString(item.tags) }}</span>
-            <span class="notes">{{ item.notes }}</span>
-            <span>￥{{ item.amount }}</span>
-          </li>
-        </ol>
-      </li>
-    </ol>
+      <Tabs class-prefix="type" :value.sync="type" :data-source="recordTypeList"/>
+      <ol v-if="groupedList.length !== 0">
+        <li v-for="(group,index) in groupedList" :key="index">
+          <h3 class="title">{{ beautify(group.title) }}<span>￥{{group.total}}</span></h3>
+          <ol>
+            <li class="record" v-for="(item,index) in group.items" :key="index">
+              <span>{{ tagString(item.tags) }}</span>
+              <span class="notes">{{ item.notes }}</span>
+              <span>￥{{ item.amount }}</span>
+            </li>
+          </ol>
+        </li>
+      </ol>
+      <div class="empty" v-else>
+        <Icon name="empty" />
+      </div>
   </Layout>
 </template>
 
@@ -67,6 +70,7 @@ export default class Statistics extends Vue {
     const newList = clone(recordList as RecordItem[])
         .filter(r => r.type === this.type)
         .sort((a, b) => dayjs(b.createAt).valueOf() - dayjs(a.createAt).valueOf());
+    if (newList.length === 0) {return [] as Result;}
     const result:Result = [{title: dayjs(newList[0].createAt).format('YYYY-MM-DD'), items: [newList[0]]}];
     for (let i = 1; i < newList.length; i++) {
       const current = newList[i];
@@ -91,6 +95,20 @@ export default class Statistics extends Vue {
 
 
 <style lang="scss" scoped>
+  .empty {
+    display: flex;
+    margin-top: 64px;
+
+    .icon {
+      height: 120px;
+      width: 120px;
+      margin: auto;
+    }
+
+
+  }
+
+
 %item {
   padding: 8px 16px;
   line-height: 24px;

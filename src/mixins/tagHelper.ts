@@ -8,7 +8,8 @@ export class tagHelper extends Vue {
   createTag(){
     const name = window.prompt('请输入标签名');
     if (!name) {
-      return window.alert('标签名不可为空')
+      window.alert('标签名不可为空')
+      return
     }
     this.$store.commit('createTag', name)
   }
