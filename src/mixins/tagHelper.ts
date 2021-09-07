@@ -12,5 +12,6 @@ export class tagHelper extends Vue {
       return
     }
     this.$store.commit('createTag', name)
+    window.alert('创建成功');
   }
 }

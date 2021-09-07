@@ -26,38 +26,28 @@ import {Component} from 'vue-property-decorator';
 
 @Component
 export default class NumberPad extends Vue {
-  output = '0';
+  get output() {
+    return this.$store.state.output;
+  }
 
   inputContent(event: MouseEvent) {
     let button = event.target as HTMLButtonElement;
     let input = button.textContent!;  // !代表不为null
-    if (this.output.length === 16) {return;}
-    if (this.output === '0' && '0123456789'.indexOf(input) >= 0) {
-      this.output = input;
-      return;
-    }
-    if (this.output.indexOf('.') >= 0 && input === '.') {
-      return;
-    }
-    this.output += input;
+    this.$store.commit('inputContent',input)
   }
 
-  remove() {
-    if (this.output.length === 1) {
-      this.output = '0';
-    } else {
-      this.output = this.output.slice(0, -1);
-    }
+  remove(){
+    this.$store.commit('removeOutput')
   }
 
-  clear() {
-    this.output = '0';
+
+  clear(){
+    this.$store.commit('clearOutput')
   }
 
   ok() {
     this.$emit('update:value', this.output);
     this.$emit('submit', this.output);
-    this.output = '0';
   }
 }
 </script>
