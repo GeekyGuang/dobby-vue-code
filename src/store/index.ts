@@ -10,6 +10,7 @@ type RootState = {
   recordList: RecordItem[],
   tagList: Tag[],
   currentTag?: Tag,
+  createTagErrorFlag: Error | null,
   output: string
 }
 
@@ -18,6 +19,7 @@ const store = new Vuex.Store({
     recordList: [],
     tagList: [],
     currentTag: undefined,
+    createTagErrorFlag: null,
     output: '0'
   } as RootState,
   mutations: {
@@ -64,9 +66,11 @@ const store = new Vuex.Store({
       }
     },
     createTag(state, name: string) {
+      state.createTagErrorFlag = null
       const names = state.tagList.map(item => item.name);
       if (names.indexOf(name) >= 0) {
-        window.alert('标签名已存在');
+        state.createTagErrorFlag = new Error('tag name duplicated')
+        return
       }
       const id = createId().toString();
       state.tagList.push({id, name: name});

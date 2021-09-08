@@ -2,6 +2,10 @@
 import Vue from 'vue'
 import Component from 'vue-class-component'
 
+const map:{[key: string]: string} = {
+  'tag name duplicated': '标签名重复了'
+}
+
 // You can declare mixins as the same style as components.
 @Component
 export class tagHelper extends Vue {
@@ -12,6 +16,10 @@ export class tagHelper extends Vue {
       return
     }
     this.$store.commit('createTag', name)
-    window.alert('创建成功');
+    if (this.$store.state.createTagErrorFlag){
+      window.alert(map[this.$store.state.createTagErrorFlag.message] || '未知错误')
+    } else {
+      window.alert('创建成功');
+    }
   }
 }

@@ -20,5 +20,5 @@ new Vue({
 }).$mount('#app')
 
 window.onload = () => {
-  setTimeout(() => window.scrollTo(0,10000), 0)
+  setTimeout(() => window.scrollTo(0,200), 0)
 }
