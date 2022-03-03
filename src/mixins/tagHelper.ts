@@ -1,6 +1,7 @@
 // mixins.js
 import Vue from 'vue'
 import Component from 'vue-class-component'
+import { MessageBoxInputData } from 'element-ui/types/message-box'
 
 const map: { [key: string]: string } = {
   'tag name duplicated': '标签名已存在',
@@ -16,7 +17,8 @@ export class tagHelper extends Vue {
       inputPattern: /.+/,
       inputErrorMessage: '标签名不可为空',
     })
-      .then(({ value }) => {
+      .then((res) => {
+        const value = (res as MessageBoxInputData).value
         this.$store.commit('createTag', value)
         if (this.$store.state.createTagErrorFlag) {
           this.$message.error(
