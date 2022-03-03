@@ -6,10 +6,15 @@ import store from './store/index'
 import Nav from '@/components/Nav.vue'
 import Layout from '@/components/Layout.vue'
 import Icon from '@/components/Icon.vue'
-import { MessageBox } from 'element-ui'
+import { MessageBox, Message } from 'element-ui'
 import './assets/style/element-variables.scss'
 
 Vue.prototype.$msgbox = MessageBox
+
+Vue.prototype.$alert = MessageBox.alert
+Vue.prototype.$confirm = MessageBox.confirm
+Vue.prototype.$prompt = MessageBox.prompt
+Vue.prototype.$message = Message
 
 Vue.component('Nav', Nav)
 Vue.component('Layout', Layout)

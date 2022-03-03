@@ -4,4 +4,10 @@ $--color-primary: #16b6ae;
 /* 改变 icon 字体路径变量，必需 */
 $--font-path: '~element-ui/lib/theme-chalk/fonts';
 
-@import '~element-ui/packages/theme-chalk/src/index';
+// @import '~element-ui/packages/theme-chalk/src/index';
+@import '~element-ui/packages/theme-chalk/src/message-box.scss';
+@import '~element-ui/packages/theme-chalk/src/message.scss';
+
+.el-message-box {
+  width: 300px !important;
+}
