@@ -54,6 +54,7 @@ export default class Tabs extends Vue{
   border-radius: 8px;
   border: 1px solid #16b6ae;
   overflow: hidden;
+  margin-bottom: 0;
 
   &-item {
     width: 50%;

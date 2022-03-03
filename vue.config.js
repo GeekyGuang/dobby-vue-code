@@ -1,6 +1,6 @@
 const path = require('path')
 module.exports = {
-  publicPath: process.env.NODE_ENV === 'production' ? '/morney-web/' : '/',
+  publicPath: process.env.NODE_ENV === 'production' ? '/dobby-vue/' : '/',
   lintOnSave: false,
 
   chainWebpack: (config) => {

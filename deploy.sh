@@ -3,6 +3,7 @@
 # 当发生错误时中止脚本
 set -e
 
+rm -rf dist
 # 构建
 yarn build
 
@@ -18,8 +19,8 @@ git commit -m 'deploy'
 
 # 部署到 https://<USERNAME>.github.io
 # git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git master
-
+git remote add gitee git@gitee.com:xmix/dobby-vue.git
 # 部署到 https://<USERNAME>.github.io/<REPO>
-git push -f git@github.com:TravisWongX/morney-web.git master:gh-pages
+git push -f gitee master
 
 cd -

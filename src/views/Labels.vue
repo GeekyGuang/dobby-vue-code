@@ -25,6 +25,7 @@ import {tagHelper} from '@/mixins/tagHelper';
   components: {Button},
 })
 export default class Labels extends mixins(tagHelper) {
+
   get tags() {
     return this.$store.state.tagList
   }
@@ -40,7 +41,10 @@ export default class Labels extends mixins(tagHelper) {
   background-color: white;
   font-size: 16px;
   padding-left: 16px;
-  color: #16b6ae;
+
+  a {
+    color: #16b6ae;
+  }
 
   > .tag {
     display: flex;
@@ -53,6 +57,7 @@ export default class Labels extends mixins(tagHelper) {
       width: 18px;
       height: 18px;
       margin-right: 16px;
+      color: #16b6ae;
     }
   }
 
