@@ -21,11 +21,13 @@ body {
 
 
 <style lang="scss">
+  #app {
+    background: #fafafa;
+  }
   @media(min-width: 500px) {
     #app {
       max-width: 500px;
       margin: 0 auto;
-      background: white;
     }
     body {
       background: #24292f;

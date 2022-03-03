@@ -1,4 +1,5 @@
 <template>
+<div class="wrapper">
   <ul class="tabs">
     <li v-for="item in dataSource" :key="item.value"
         class="tabs-item"
@@ -6,6 +7,7 @@
         @click="changeTab(item)"
     >{{item.text}}</li>
   </ul>
+</div>
 </template>
 
 <script lang="ts">
@@ -35,29 +37,47 @@ export default class Tabs extends Vue{
 </script>
 
 <style lang="scss" scoped>
-.tabs {
-  background: #C4C4C4;
+
+.wrapper {
+  background: #ffffff;
   display: flex;
-  font-size: 24px;
-  color: #000;
+  align-items: center;
+  justify-content: center;
+  height: 64px;
+  box-shadow: 0 0 3px rgba(0,0,0,.3);
+}
+.tabs {
+  background: #ffffff;
+  display: flex;
+  font-size: 18px;
+  color: #16b6ae;
+  border-radius: 8px;
+  border: 1px solid #16b6ae;
+  overflow: hidden;
 
   &-item {
     width: 50%;
-    height: 64px;
     display: flex;
+    height: 32px;
     justify-content: center;
     align-items: center;
     position: relative;
+    padding: 0 16px;
 
-    &.selected::after {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 4px;
-      background: #333333;
-      left: 0;
-      bottom: 0;
+    &.selected {
+      background: linear-gradient(45deg, rgba(0,210,180,1) 0%, rgba(0,191,195,1) 100%);
+      color: white;
     }
+
+    // &.selected::after {
+    //   content: '';
+    //   position: absolute;
+    //   width: 100%;
+    //   height: 4px;
+    //   background: #333333;
+    //   left: 0;
+    //   bottom: 0;
+    // }
   }
 }
 </style>

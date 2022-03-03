@@ -33,6 +33,7 @@ export default class FormItem extends Vue{
   align-items: center;
   .name {
     padding-right: 16px;
+    color: #16b6ae;
   }
 
   input {
@@ -41,6 +42,11 @@ export default class FormItem extends Vue{
     flex-grow: 1;
     background: transparent;
     border: none;
+    color:#16b6ae;
+  }
+
+  input::placeholder {
+    color: #bfebe9;
   }
 }
 </style>

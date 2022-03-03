@@ -40,6 +40,7 @@ export default class Labels extends mixins(tagHelper) {
   background-color: white;
   font-size: 16px;
   padding-left: 16px;
+  color: #16b6ae;
 
   > .tag {
     display: flex;
@@ -51,7 +52,6 @@ export default class Labels extends mixins(tagHelper) {
     .icon {
       width: 18px;
       height: 18px;
-      color: #666;
       margin-right: 16px;
     }
   }

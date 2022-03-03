@@ -1,4 +1,4 @@
-type RecordItem = {
+export type RecordItem = {
   tags: string[]
   notes: string
   type: string
@@ -6,12 +6,12 @@ type RecordItem = {
   createAt?: Date
 }
 
-type Tag = {
+export type Tag = {
   id: string
   name: string
 }
 
-type TagListModel = {
+export type TagListModel = {
   data: Tag[]
   fetch: () => Tag[]
   create: (name: string) => 'success' | 'duplicated' // 联合类型

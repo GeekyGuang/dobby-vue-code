@@ -1,14 +1,14 @@
 <template>
   <div class="tags">
-    <div class="new">
-      <button @click="createTag">新增标签</button>
-    </div>
     <ul class="current">
       <li v-for="item in tagList" :key="item.id"
           :class="{selected: selectedTags.indexOf(item)>=0}"
           @click="toggle(item)">{{ item.name }}
       </li>
     </ul>
+    <div class="new">
+      <button @click="createTag">新增标签</button>
+    </div>
   </div>
 </template>
 
@@ -53,15 +53,16 @@ export default class Tags extends mixins(tagHelper) {
   font-size: 14px;
   padding: 16px;
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
 
   > .current {
     display: flex;
     flex-wrap: wrap;
 
     > li {
-      $bg: #D9D9D9;
-      background: $bg;
+      $bg: #6ad0cb;
+      border: 1px solid #16b6ae;
+      background: #fafafa;
       $h: 24px;
       height: $h;
       padding: 0 16px;
@@ -69,9 +70,10 @@ export default class Tags extends mixins(tagHelper) {
       margin-right: 12px;
       line-height: $h;
       margin-top: 4px;
+      color: #16b6ae;
 
       &.selected {
-        background: darken($bg, 50%);
+        background: #16b6ae;
         color: white;
       }
     }
@@ -84,7 +86,7 @@ export default class Tags extends mixins(tagHelper) {
       background: transparent;
       border: none;
       border-bottom: 1px solid;
-      color: #999999;
+      color: #6ad0cb;
       padding: 0 4px;
     }
 

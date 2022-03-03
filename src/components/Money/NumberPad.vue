@@ -64,11 +64,13 @@ export default class NumberPad extends Vue {
     font-family: Consolas, monospace;
     text-align: right;
     height: 72px;
+    color: #16b6ae;
   }
 
   .buttons {
     @extend %clearFix;
     $bg: #f2f2f2;
+    background: linear-gradient(45deg, rgba(0,210,180,1) 0%, rgba(0,191,195,1) 100%);
 
     > button {
       background: transparent;
@@ -76,37 +78,19 @@ export default class NumberPad extends Vue {
       width: 25%;
       height: 64px;
       float: left;
+      border-right: 1px solid #8fe4e5;
+      border-bottom: 1px solid #8fe4e5;
+      font-size: 24px;
+      color: white;
 
-      &:nth-child(1) {
-        background: $bg;
-      }
-
-      &:nth-child(2), &:nth-child(5) {
-        background: darken($bg, 4%);
-      }
-
-      &:nth-child(3), &:nth-child(6), &:nth-child(9) {
-        background: darken($bg, 4*2%);
-      }
-
-      &:nth-child(4), &:nth-child(7), &:nth-child(10){
-        background: darken($bg, 4*3%);
-      }
-
-      &:nth-child(8), &:nth-child(11) , &:nth-child(13){
-        background: darken($bg, 4*4%);
-      }
-
-      &:nth-child(14) {
-        background: darken($bg, 4*5%);
-      }
-
-      &:nth-child(12) {
-        background: darken($bg, 4*6%);
+      &:nth-child(4),&:nth-child(8), &:nth-child(12) {
+        border-right: 0;
+        font-size: 18px;
       }
 
       &:active {
-        background: #fff;
+        background: #e3f8f9;
+        color: #16b6ae;
       }
     }
 

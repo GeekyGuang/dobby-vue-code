@@ -65,6 +65,7 @@ export default class EditLabel extends Vue{
   display: flex;
   align-items: center;
   justify-content: space-between;
+  color: #16b6ae;
   >.title{}
   >.leftIcon{
     width: 24px;

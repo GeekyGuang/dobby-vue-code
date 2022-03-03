@@ -36,6 +36,7 @@ export default{
      justify-content: center;
      align-items: center;
      flex-direction: column;
+     color: #b7b7b7;
 
      .icon {
        width: 32px;

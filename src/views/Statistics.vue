@@ -27,6 +27,7 @@ import intervalList from '@/constants/intervalList';
 import recordTypeList from '@/constants/recordTypeList';
 import dayjs from 'dayjs';
 import clone from '@/lib/clone';
+import { RecordItem, Tag } from '@/custom';
 
 @Component({
   components: {Tabs}
@@ -103,6 +104,7 @@ export default class Statistics extends Vue {
       height: 120px;
       width: 120px;
       margin: auto;
+      color: #6ad0cb;
     }
 
 
@@ -119,34 +121,19 @@ export default class Statistics extends Vue {
 
 .title {
   @extend %item;
+  color: #00b6c2;
 }
 
 .record {
   background: white;
   @extend %item;
+  color: #16b6ae;
 }
 
 .notes {
   margin-right: auto;
   margin-left: 16px;
-  color: #999;
+  color: #6addde;
 }
 
-::v-deep {
-  .type-tabs-item {
-    background: #C4C4C4;
-
-    &.selected {
-      background: #fff;
-
-      &::after {
-        display: none;
-      }
-    }
-  }
-
-  .interval-tabs-item {
-    height: 48px;
-  }
-}
 </style>

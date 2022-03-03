@@ -17,7 +17,7 @@ export default class Button extends Vue{
 .button {
   border: none;
   border-radius: 4px;
-  background: #767676;
+  background: #16b6ae;
   padding: 0 16px;
   height: 40px;
   color: white;
