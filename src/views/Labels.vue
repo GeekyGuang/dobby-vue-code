@@ -25,7 +25,6 @@ import {tagHelper} from '@/mixins/tagHelper';
   components: {Button},
 })
 export default class Labels extends mixins(tagHelper) {
-
   get tags() {
     return this.$store.state.tagList
   }
