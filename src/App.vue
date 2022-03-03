@@ -18,3 +18,17 @@ body {
   background-color: #f5f5f5;
 }
 </style>
+
+
+<style lang="scss">
+  @media(min-width: 500px) {
+    #app {
+      max-width: 500px;
+      margin: 0 auto;
+      background: white;
+    }
+    body {
+      background: #24292f;
+    }
+  }
+</style>
