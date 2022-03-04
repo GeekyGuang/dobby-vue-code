@@ -43,11 +43,11 @@ export default class FormItem extends Vue{
     flex-grow: 1;
     background: transparent;
     border: none;
-    color:#16b6ae;
+    color:#666;
   }
 
   input::placeholder {
-    color: #bfebe9;
+    color: #b7b7b7;
   }
 }
 </style>

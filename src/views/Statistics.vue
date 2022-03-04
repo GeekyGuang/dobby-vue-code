@@ -121,7 +121,7 @@ export default class Statistics extends Vue {
 
 .title {
   @extend %item;
-  color: #00b6c2;
+  color: #333;
 }
 
 .record {
