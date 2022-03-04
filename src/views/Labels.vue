@@ -29,7 +29,7 @@ import Tabs from '@/components/Tabs.vue';
   components: {Button, Tabs},
 })
 export default class Labels extends mixins(tagHelper) {
-  type = '-';
+  type = this.$store.state.currentType || '-';
   recordTypeList = recordTypeList;
 
   get tags() {

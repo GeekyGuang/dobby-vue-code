@@ -1,3 +1,4 @@
+import { Message } from 'element-ui'
 import { RecordItem, Tag } from './../custom.d'
 import Vue from 'vue'
 import Vuex from 'vuex'
@@ -13,6 +14,7 @@ type RootState = {
   currentTag?: Tag
   createTagErrorFlag: Error | null
   output: string
+  currentType?: string
 }
 
 const store = new Vuex.Store({
@@ -22,6 +24,7 @@ const store = new Vuex.Store({
     currentTag: undefined,
     createTagErrorFlag: null,
     output: '0',
+    currentType: '-',
   } as RootState,
   mutations: {
     inputContent(state, input: string) {
@@ -73,7 +76,7 @@ const store = new Vuex.Store({
         store.commit('createTag', { name: '酒吧', type: '-' })
         store.commit('createTag', { name: '工资', type: '+' })
         store.commit('createTag', { name: '彩票', type: '+' })
-        store.commit('createTag', { name: '小费', type: '+' })
+        store.commit('createTag', { name: '兼职', type: '+' })
       }
     },
     createTag(state, payload: { name: string; type: string }) {
@@ -94,16 +97,27 @@ const store = new Vuex.Store({
     setCurrentTag(state, id: string) {
       state.currentTag = state.tagList.find((t) => t.id === id)
     },
-    updateTag(state, payload: { id: string; name: string }) {
-      const { id, name } = payload
+    updateTag(state, payload: { id: string; name: string; type: string }) {
+      const { id, name, type } = payload
+      console.log(id, name, type)
       const ids = state.tagList.map((item) => item.id)
       if (ids.indexOf(id) >= 0) {
-        const tag = state.tagList.filter((item) => item.id === id)[0]
-        if (tag.name === name) {
-          window.alert('标签名重复')
+        const otherTags = state.tagList.filter(
+          (item) => item.id !== id && item.type === type
+        )
+        console.log(otherTags)
+
+        const sameTag = otherTags.filter((i) => i.name === name)
+        if (sameTag.length > 0) {
+          Message.error('标签名已存在')
         } else {
+          const tag = state.tagList.filter((i) => i.id === id)[0]
           tag.name = name
           store.commit('saveTag')
+          Message({
+            message: '更新成功',
+            type: 'success',
+          })
         }
       }
     },
