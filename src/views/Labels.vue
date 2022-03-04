@@ -1,5 +1,6 @@
 <template>
   <Layout>
+    <Tabs class-prefix="type" :value.sync="type" :data-source="recordTypeList"/>
     <div class="tags">
       <router-link class='tag'
                    :to="`/labels/edit/${tag.id}`" v-for="tag in tags"
@@ -9,7 +10,7 @@
       </router-link>
     </div>
     <div class="createTag-wrapper">
-      <Button @click="createTag">新建标签</Button>
+      <Button @click="createTag(type)">新建标签</Button>
     </div>
   </Layout>
 </template>
@@ -20,13 +21,19 @@ import {Component} from 'vue-property-decorator';
 import Button from '@/components/Button.vue';
 import {mixins} from 'vue-class-component';
 import {tagHelper} from '@/mixins/tagHelper';
+import recordTypeList from '@/constants/recordTypeList';
+import { Tag } from '@/custom';
+import Tabs from '@/components/Tabs.vue';
 
 @Component({
-  components: {Button},
+  components: {Button, Tabs},
 })
 export default class Labels extends mixins(tagHelper) {
+  type = '-';
+  recordTypeList = recordTypeList;
+
   get tags() {
-    return this.$store.state.tagList
+    return (this.$store.state.tagList as Tag[]).filter(i => i.type === this.type)
   }
 
   created() {
@@ -40,6 +47,7 @@ export default class Labels extends mixins(tagHelper) {
   background-color: white;
   font-size: 16px;
   padding-left: 16px;
+  margin-top: 3px;
 
   a {
     color: #16b6ae;

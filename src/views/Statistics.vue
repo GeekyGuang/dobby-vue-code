@@ -3,12 +3,12 @@
       <Tabs class-prefix="type" :value.sync="type" :data-source="recordTypeList"/>
       <ol v-if="groupedList.length !== 0">
         <li v-for="(group,index) in groupedList" :key="index">
-          <h3 class="title">{{ beautify(group.title) }}<span>￥{{group.total}}</span></h3>
+          <h3 class="title">{{ beautify(group.title) }}<span>&yen;{{group.total}}</span></h3>
           <ol>
             <li class="record" v-for="(item,index) in group.items" :key="index">
               <span>{{ tagString(item.tags) }}</span>
               <span class="notes">{{ item.notes }}</span>
-              <span>￥{{ item.amount }}</span>
+              <span>&yen;{{ item.amount }}</span>
             </li>
           </ol>
         </li>

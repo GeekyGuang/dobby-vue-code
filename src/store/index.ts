@@ -67,13 +67,17 @@ const store = new Vuex.Store({
     fetchTags(state) {
       state.tagList = JSON.parse(window.localStorage.getItem('tagList') || '[]')
       if (!store.state.tagList || store.state.tagList.length === 0) {
-        store.commit('createTag', '公交')
-        store.commit('createTag', '奶茶')
-        store.commit('createTag', '地铁')
-        store.commit('createTag', '酒吧')
+        store.commit('createTag', { name: '公交', type: '-' })
+        store.commit('createTag', { name: '奶茶', type: '-' })
+        store.commit('createTag', { name: '地铁', type: '-' })
+        store.commit('createTag', { name: '酒吧', type: '-' })
+        store.commit('createTag', { name: '工资', type: '+' })
+        store.commit('createTag', { name: '彩票', type: '+' })
+        store.commit('createTag', { name: '小费', type: '+' })
       }
     },
-    createTag(state, name: string) {
+    createTag(state, payload: { name: string; type: string }) {
+      const { name, type } = payload
       state.createTagErrorFlag = null
       const names = state.tagList.map((item) => item.name)
       if (names.indexOf(name) >= 0) {
@@ -81,7 +85,7 @@ const store = new Vuex.Store({
         return
       }
       const id = createId().toString()
-      state.tagList.push({ id, name: name })
+      state.tagList.push({ id, name, type })
       store.commit('saveTag')
     },
     saveTag(state) {

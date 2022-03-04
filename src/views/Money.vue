@@ -6,7 +6,7 @@
                 placeholder="请输入备注"
                 :value.sync="record.notes"/>
     </div>
-    <Tags @update:value="record.tags = $event"/>
+    <Tags @update:value="record.tags = $event" :type="record.type"/>
     <Tabs :value.sync="record.type" :dataSource="recordTypeList"/>
   </Layout>
 </template>

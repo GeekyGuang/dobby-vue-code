@@ -7,31 +7,34 @@
       </li>
     </ul>
     <div class="new">
-      <button @click="createTag">新增标签</button>
+      <button @click="createTag(type)">新增标签</button>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import {Component} from 'vue-property-decorator';
+import {Component, Prop} from 'vue-property-decorator';
 import {tagHelper} from '@/mixins/tagHelper';
 import {mixins} from 'vue-class-component';
+import { Tag } from '@/custom';
 
 
 @Component
 export default class Tags extends mixins(tagHelper) {
-  selectedTags: string[] = [];
+  @Prop({required:true}) type!:string
+
+  selectedTags: Tag[] = [];
 
   get tagList(){
-    return this.$store.state.tagList
+    return (this.$store.state.tagList as Tag[]).filter(i => i.type === this.type)
   }
 
   created(){
     this.$store.commit('fetchTags')
   }
 
-  toggle(tag: string) {
+  toggle(tag: Tag) {
     const index = this.selectedTags.indexOf(tag);
     if (index >= 0) {
       this.selectedTags.splice(index);

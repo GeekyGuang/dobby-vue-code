@@ -9,6 +9,7 @@ export type RecordItem = {
 export type Tag = {
   id: string
   name: string
+  type: string
 }
 
 export type TagListModel = {

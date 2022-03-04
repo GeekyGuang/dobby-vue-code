@@ -10,7 +10,7 @@ const map: { [key: string]: string } = {
 // You can declare mixins as the same style as components.
 @Component
 export class tagHelper extends Vue {
-  createTag() {
+  createTag(type: string) {
     this.$prompt('请输入标签名', '提示', {
       confirmButtonText: '确定',
       cancelButtonText: '取消',
@@ -19,7 +19,7 @@ export class tagHelper extends Vue {
     })
       .then((res) => {
         const value = (res as MessageBoxInputData).value
-        this.$store.commit('createTag', value)
+        this.$store.commit('createTag', { name: value, type })
         if (this.$store.state.createTagErrorFlag) {
           this.$message.error(
             map[this.$store.state.createTagErrorFlag.message] || '未知错误'
@@ -31,12 +31,8 @@ export class tagHelper extends Vue {
           })
         }
       })
-      .catch(() => {
-        this.$message({
-          type: 'info',
-          message: '取消输入',
-          customClass: 'msg',
-        })
+      .catch((e) => {
+        console.log(e.message)
       })
   }
 }
