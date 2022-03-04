@@ -54,6 +54,31 @@ const store = new Vuex.Store({
       state.recordList = JSON.parse(
         window.localStorage.getItem('recordList') || '[]'
       ) as RecordItem[]
+      if (!state.recordList || state.recordList.length === 0) {
+        store.commit('createRecord', {
+          amount: 2,
+          createAt: '2022-03-01T02:47:27.821Z',
+          notes: '',
+          tags: [{ id: '1', name: '公交', type: '-' }],
+          type: '-',
+        })
+        store.commit('createRecord', {
+          amount: 16,
+          createAt: '2022-02-02T02:47:27.821Z',
+          notes: '',
+          tags: [{ id: '2', name: '奶茶', type: '-' }],
+          type: '-',
+        })
+
+        store.commit('createRecord', {
+          amount: 500,
+          createAt: '2022-03-04T02:56:05.068Z',
+          notes: '',
+          tags: [{ id: '7', name: '兼职', type: '+' }],
+          type: '+',
+        })
+        store.commit('saveRecords')
+      }
     },
     createRecord(state, record: RecordItem) {
       const record2: RecordItem = clone(record)
