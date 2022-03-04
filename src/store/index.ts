@@ -64,7 +64,7 @@ const store = new Vuex.Store({
         })
         store.commit('createRecord', {
           amount: 16,
-          createAt: '2022-02-02T02:47:27.821Z',
+          createAt: '2022-02-14T02:47:27.821Z',
           notes: '',
           tags: [{ id: '2', name: '奶茶', type: '-' }],
           type: '-',
@@ -82,7 +82,6 @@ const store = new Vuex.Store({
     },
     createRecord(state, record: RecordItem) {
       const record2: RecordItem = clone(record)
-      record2.createAt = new Date()
       state.recordList.push(record2)
       store.commit('saveRecords')
     },
@@ -130,7 +129,6 @@ const store = new Vuex.Store({
         const otherTags = state.tagList.filter(
           (item) => item.id !== id && item.type === type
         )
-        console.log(otherTags)
 
         const sameTag = otherTags.filter((i) => i.name === name)
         if (sameTag.length > 0) {

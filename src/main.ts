@@ -6,7 +6,7 @@ import store from './store/index'
 import Nav from '@/components/Nav.vue'
 import Layout from '@/components/Layout.vue'
 import Icon from '@/components/Icon.vue'
-import { MessageBox, Message } from 'element-ui'
+import { MessageBox, Message, DatePicker } from 'element-ui'
 import './assets/style/element-variables.scss'
 
 Vue.prototype.$msgbox = MessageBox
@@ -16,6 +16,7 @@ Vue.prototype.$confirm = MessageBox.confirm
 Vue.prototype.$prompt = MessageBox.prompt
 Vue.prototype.$message = Message
 
+Vue.use(DatePicker, { size: 'small' })
 Vue.component('Nav', Nav)
 Vue.component('Layout', Layout)
 Vue.component('Icon', Icon)

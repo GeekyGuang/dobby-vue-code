@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="formwrapper">
     <label class="formItem">
       <span class="name">{{ fieldName }}</span>
       <input type="text" :value="value"
@@ -34,6 +34,7 @@ export default class FormItem extends Vue{
   .name {
     padding-right: 16px;
     color: #16b6ae;
+    white-space: nowrap;
   }
 
   input {
