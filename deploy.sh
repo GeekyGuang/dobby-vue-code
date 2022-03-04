@@ -23,4 +23,8 @@ git remote add gitee git@gitee.com:xmix/dobby-vue.git
 # 部署到 https://<USERNAME>.github.io/<REPO>
 git push -f gitee master
 
+git remote add github git@github.com:TravisWongX/dobby-vue.git
+
+git push -f github master
+
 cd -
