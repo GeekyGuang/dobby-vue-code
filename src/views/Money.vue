@@ -96,6 +96,11 @@ export default class Money extends Vue {
 </script>
 
 <style lang="scss" scoped>
+@import '~@/assets/style/helper.scss';
+
+.tags {
+  @extend %scroll;
+}
 ::v-deep .layout-content {
   display: flex;
   flex-direction: column-reverse;

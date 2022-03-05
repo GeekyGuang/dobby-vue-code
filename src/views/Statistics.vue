@@ -1,7 +1,7 @@
 <template>
   <Layout>
       <Tabs class-prefix="type" :value.sync="type" :data-source="recordTypeList"/>
-      <ol v-if="groupedList.length !== 0">
+      <ol v-if="groupedList.length !== 0" class="lists">
         <li v-for="(group,index) in groupedList" :key="index">
           <h3 class="title">{{ beautify(group.title) }}<span>&yen;{{group.total}}</span></h3>
           <ol>
@@ -96,6 +96,7 @@ export default class Statistics extends Vue {
 
 
 <style lang="scss" scoped>
+@import '~@/assets/style/helper.scss';
   .empty {
     display: flex;
     margin-top: 64px;
@@ -108,6 +109,10 @@ export default class Statistics extends Vue {
     }
 
 
+  }
+
+  .lists {
+    @extend %scroll;
   }
 
 

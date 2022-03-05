@@ -45,6 +45,10 @@ export default class Tabs extends Vue{
   justify-content: center;
   height: 64px;
   box-shadow: 0 0 3px rgba(0,0,0,.3);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
 }
 .tabs {
   background: #ffffff;

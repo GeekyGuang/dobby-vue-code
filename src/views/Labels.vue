@@ -43,11 +43,12 @@ export default class Labels extends mixins(tagHelper) {
 </script>
 
 <style lang="scss" scoped>
+@import '~@/assets/style/helper.scss';
 .tags {
   background-color: white;
   font-size: 16px;
   padding-left: 16px;
-  margin-top: 3px;
+  @extend %scroll;
 
   a {
     color: #16b6ae;
@@ -80,7 +81,7 @@ export default class Labels extends mixins(tagHelper) {
 
   &-wrapper {
     padding-top: 16px;
-    margin-top: 44-16px;
+    margin: 44-16px 0;
     text-align: center;
   }
 
