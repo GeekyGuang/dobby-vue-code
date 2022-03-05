@@ -14,8 +14,8 @@
       <button @click="inputContent">8</button>
       <button @click="inputContent">9</button>
       <button @click="ok" class="OK">OK</button>
-      <button @click="inputContent" class="zero">0</button>
       <button @click="inputContent">.</button>
+      <button @click="inputContent" class="zero">0</button>
     </div>
   </div>
 </template>
