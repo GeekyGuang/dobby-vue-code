@@ -44,12 +44,20 @@ export default class Tabs extends Vue{
   align-items: center;
   justify-content: center;
   height: 64px;
-  box-shadow: 0 0 3px rgba(0,0,0,.3);
+  box-shadow: 0 0 3px rgba(0,0,0,.2);
   position: fixed;
   width: 100%;
   top: 0;
   left: 0;
 }
+
+  @media(min-width: 500px) {
+    .wrapper {
+      width: 500px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
 .tabs {
   background: #ffffff;
   display: flex;
