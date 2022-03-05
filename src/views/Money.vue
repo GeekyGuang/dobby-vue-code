@@ -100,6 +100,7 @@ export default class Money extends Vue {
 
 .tags {
   @extend %scroll;
+  margin-top: 64px;
 }
 ::v-deep .layout-content {
   display: flex;

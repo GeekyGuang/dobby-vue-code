@@ -35,6 +35,7 @@ export default class FormItem extends Vue{
     padding-right: 16px;
     color: #16b6ae;
     white-space: nowrap;
+    line-height: 40px;
   }
 
   input {
