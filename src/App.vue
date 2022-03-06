@@ -29,8 +29,5 @@ body {
       max-width: 500px;
       margin: 0 auto;
     }
-    body {
-      background: #24292f;
-    }
   }
 </style>
