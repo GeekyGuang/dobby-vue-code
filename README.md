@@ -1,29 +1,16 @@
-# morney-app
+# Dobby 记账(Vue版)
 
-## Project setup
+## 安装依赖
 ```
 yarn install
 ```
 
-### Compiles and hot-reloads for development
+### 开发
 ```
 yarn serve
 ```
 
-### Compiles and minifies for production
+### 打包
 ```
 yarn build
 ```
-
-### Run your unit tests
-```
-yarn test:unit
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
